@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Média</title>
+
+<style>
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #3e08bd;
+    border-radius: 5px;
+}
+
+input[type="number"] {
+    width: 100px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #d32a8d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#situacao {
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Calculadora de Média</h2>
+  <button onclick="calcularMedia()">Calcular Média</button>
+  <br>
+  <span>Nota 1: <input type="number" id="nota1"></span>
+  <br>
+  <span>Nota 2: <input type="number" id="nota2"></span>
+  <br>
+  <button onclick="resetarCampos()">Limpar</button>
+  <br>
+  <span>Média: <span id="media"></span></span>
+  <br>
+  <span>Situação: <span id="situacao"></span></span>
+</div>
+
+<script>
+function calcularMedia() {
+    var nota1 = parseFloat(document.getElementById("nota1").value);
+    var nota2 = parseFloat(document.getElementById("nota2").value);
+  
+    var media = (nota1 + nota2) / 2;
+  
+    document.getElementById("media").innerHTML = media.toFixed(2);
+  
+    var situacao, cor;
+  
+    if (media >= 6) {
+        situacao = "Aprovado"; // Mudança para cor azul quando aprovado
+        cor = "blue";
+    } else {
+        situacao = "Reprovado"; // Mudança para cor vermelha quando reprovado
+        cor = "red";
+    }
+  
+    document.getElementById("situacao").innerHTML = situacao;
+    document.getElementById("situacao").style.color = cor; // Alteração para configurar a cor
+}
+
+function resetarCampos() {
+    document.getElementById("nota1").value = "";
+    document.getElementById("nota2").value = "";
+    document.getElementById("media").innerHTML = "";
+    document.getElementById("situacao").innerHTML = "";
+    document.getElementById("situacao").style.color = "";
+}
+</script>
+</body>
+</html>
